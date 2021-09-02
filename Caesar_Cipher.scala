@@ -2,13 +2,13 @@ import scala.io.StdIn._
 
 object Caesar_Cipher extends App{
 
-    val alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    val alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
     
-    val Encryption = (alp:String, shift:Int, c:Char) => alp((alp.indexOf(c.toUpper) + shift) % alp.size)
+    val Encryption = (alp:String, shift:Int, c:Char) => alp((alp.indexOf(c) + shift) % alp.size)
 
     val Decryption = (alp:String, shift:Int, c:Char) => {
-         if((alp.indexOf(c.toUpper)-shift)<0) alp((alp.indexOf(c.toUpper)-shift+alp.size) % alp.size)
-         else alp((alp.indexOf(c.toUpper) - shift) % alp.size)
+         if((alp.indexOf(c)-shift)<0) alp((alp.indexOf(c)-shift+alp.size) % alp.size)
+         else alp((alp.indexOf(c) - shift) % alp.size)
     }
 
     val Cipher = (function:(String, Int, Char)=>Char, s:String, alp:String, shift:Int) => s.map(function(alp,shift,_))
